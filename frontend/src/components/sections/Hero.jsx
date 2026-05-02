@@ -67,7 +67,7 @@ export default function Hero() {
               {/* Subtle translucent black underline */}
               <span
                 aria-hidden
-                className="absolute left-1 right-1 -bottom-1 h-[2px] rounded-full"
+                className="absolute left-4 right-2 -bottom-1 h-[2px] rounded-full"
                 style={{ background: "rgba(15, 20, 25, 0.35)" }}
               />
             </span>
