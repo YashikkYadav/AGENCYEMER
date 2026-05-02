@@ -64,23 +64,12 @@ export default function Hero() {
               <span className="script italic-soft text-[var(--sage)] text-[1.12em] leading-[0.95]">
                 patients
               </span>
-              {/* Beautiful hand-drawn underline */}
-              <svg
+              {/* Subtle translucent black underline */}
+              <span
                 aria-hidden
-                className="absolute left-1 right-1 -bottom-2 w-[calc(100%-0.5rem)] h-[0.4em] pointer-events-none"
-                viewBox="0 0 200 20"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M4,12 C 50,4 100,18 196,7"
-                  stroke="#F15A29"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  fill="none"
-                  className="animate-draw"
-                  style={{ strokeDasharray: "400", strokeDashoffset: "400", animation: "draw 1.4s cubic-bezier(.2,.7,.2,1) .6s forwards" }}
-                />
-              </svg>
+                className="absolute left-1 right-1 -bottom-1 h-[2px] rounded-full"
+                style={{ background: "rgba(15, 20, 25, 0.35)" }}
+              />
             </span>
             <span>.</span>
           </h1>
