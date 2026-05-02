@@ -31,7 +31,7 @@ const faqs = [
 export default function FAQ() {
   const [open, setOpen] = useState(0);
   return (
-    <section id="faq" data-testid="faq" className="py-20 lg:py-28 bg-white">
+    <section id="faq" data-testid="faq" className="py-20 lg:py-28 bg-[var(--paper)]">
       <div className="max-w-[900px] mx-auto px-5 sm:px-8">
         <div className="text-center mb-12">
           <div className="text-[12px] font-semibold tracking-[0.18em] uppercase text-[var(--sage)] mb-4">
@@ -39,7 +39,7 @@ export default function FAQ() {
           </div>
           <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] tracking-[-0.02em] font-light text-[var(--ink)]">
             Everything you'd ask on<br />
-            the <span className="serif italic-soft text-[var(--sage)]">discovery</span> call.
+            the <span className="script text-[var(--sage)] text-[1.2em]">discovery</span> call.
           </h2>
         </div>
 

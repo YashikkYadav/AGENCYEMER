@@ -22,14 +22,14 @@ export default function LeadMagnet() {
   };
 
   return (
-    <section id="audit" data-testid="lead-magnet" className="py-20 lg:py-28 bg-[var(--paper-2)]">
+    <section id="audit" data-testid="lead-magnet" className="py-20 lg:py-28 bg-[var(--paper-2)]/50">
       <div className="max-w-[1100px] mx-auto px-5 sm:px-8">
         <div className="relative overflow-hidden rounded-[28px] bg-[var(--ink)] text-white p-8 lg:p-14">
           {/* Soft radial accent */}
           <div
             aria-hidden
             className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full pointer-events-none"
-            style={{ background: "radial-gradient(circle, rgba(14,110,79,0.28) 0%, transparent 60%)" }}
+            style={{ background: "radial-gradient(circle, rgba(241,90,41,0.30) 0%, transparent 60%)" }}
           />
 
           <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
@@ -44,7 +44,7 @@ export default function LeadMagnet() {
                 className="text-[clamp(2rem,4vw,3.2rem)] leading-[1.05] tracking-[-0.02em] font-light"
               >
                 Book your free<br />
-                <span className="serif italic-soft text-[var(--sage)]">clinic growth audit</span>.<br />
+                <span className="script text-[var(--sage)] text-[1.2em] leading-[0.9] block">clinic growth audit</span>
                 Worth ₹5,000.
               </h2>
               <p className="mt-5 text-[15.5px] leading-relaxed text-white/70 max-w-md">

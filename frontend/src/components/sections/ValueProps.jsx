@@ -33,7 +33,7 @@ const props = [
 
 export default function ValueProps() {
   return (
-    <section data-testid="value-props" className="py-20 lg:py-28 bg-[var(--paper-2)]">
+    <section data-testid="value-props" className="py-20 lg:py-28 bg-[var(--paper)]">
       <div className="max-w-[1280px] mx-auto px-5 sm:px-8">
         <div className="max-w-3xl">
           <div className="text-[12px] font-semibold tracking-[0.18em] uppercase text-[var(--sage)] mb-4">
@@ -41,7 +41,7 @@ export default function ValueProps() {
           </div>
           <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] tracking-[-0.02em] font-light text-[var(--ink)]">
             A calm, measurable way to grow a clinic —{" "}
-            <span className="serif italic-soft text-[var(--sage)]">without the noise</span>.
+            <span className="script italic-soft text-[var(--sage)] text-[1.1em]">without the noise</span>.
           </h2>
         </div>
 

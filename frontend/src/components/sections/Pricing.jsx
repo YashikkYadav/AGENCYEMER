@@ -50,7 +50,7 @@ const tiers = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" data-testid="pricing" className="py-20 lg:py-28 bg-[var(--paper-2)]">
+    <section id="pricing" data-testid="pricing" className="py-20 lg:py-28 bg-[var(--paper)]">
       <div className="max-w-[1280px] mx-auto px-5 sm:px-8">
         <div className="max-w-3xl mb-14 text-center mx-auto">
           <div className="text-[12px] font-semibold tracking-[0.18em] uppercase text-[var(--sage)] mb-4">
@@ -58,7 +58,7 @@ export default function Pricing() {
           </div>
           <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] tracking-[-0.02em] font-light text-[var(--ink)]">
             Simple, transparent pricing.<br />
-            <span className="serif italic-soft text-[var(--sage)]">No</span> long lock-ins.
+            <span className="script text-[var(--sage)] text-[1.2em]">No</span> long lock-ins.
           </h2>
           <p className="mt-5 text-[15.5px] text-[var(--muted)]">
             All engagements are 90-day commitments. No setup fees. Pause anytime after the first cycle.

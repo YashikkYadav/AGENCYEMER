@@ -29,7 +29,7 @@ const cases = [
 
 export default function CaseStudies() {
   return (
-    <section id="case-studies" data-testid="case-studies" className="py-20 lg:py-28 bg-white">
+    <section id="case-studies" data-testid="case-studies" className="py-20 lg:py-28 bg-[var(--paper-2)]/50">
       <div className="max-w-[1280px] mx-auto px-5 sm:px-8">
         <div className="flex items-end justify-between mb-14 gap-8">
           <div className="max-w-2xl">
@@ -38,7 +38,7 @@ export default function CaseStudies() {
             </div>
             <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] tracking-[-0.02em] font-light text-[var(--ink)]">
               Real doctors.<br />
-              <span className="serif italic-soft text-[var(--sage)]">Real</span> numbers.
+              <span className="script text-[var(--sage)] text-[1.2em]">Real</span> numbers.
             </h2>
           </div>
           <a

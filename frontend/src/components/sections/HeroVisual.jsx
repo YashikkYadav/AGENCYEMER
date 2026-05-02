@@ -32,17 +32,17 @@ export default function HeroVisual() {
           <svg viewBox="0 0 400 160" className="w-full h-full" preserveAspectRatio="none">
             <defs>
               <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="#0E6E4F" stopOpacity="0.18" />
-                <stop offset="100%" stopColor="#0E6E4F" stopOpacity="0" />
+                <stop offset="0%" stopColor="#F15A29" stopOpacity="0.22" />
+                <stop offset="100%" stopColor="#F15A29" stopOpacity="0" />
               </linearGradient>
             </defs>
             {[40, 80, 120].map((y) => (
               <line key={y} x1="0" x2="400" y1={y} y2={y} stroke="#EEF0EC" strokeWidth="1" />
             ))}
             <path d="M0,135 L45,122 L95,115 L140,98 L180,104 L220,82 L260,68 L300,55 L340,42 L400,24 L400,160 L0,160 Z" fill="url(#g)" />
-            <path d="M0,135 L45,122 L95,115 L140,98 L180,104 L220,82 L260,68 L300,55 L340,42 L400,24" fill="none" stroke="#0E6E4F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M0,135 L45,122 L95,115 L140,98 L180,104 L220,82 L260,68 L300,55 L340,42 L400,24" fill="none" stroke="#F15A29" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             {[[0,135],[180,104],[300,55],[400,24]].map(([x,y],i) => (
-              <circle key={i} cx={x} cy={y} r="3.5" fill="#fff" stroke="#0E6E4F" strokeWidth="2" />
+              <circle key={i} cx={x} cy={y} r="3.5" fill="#fff" stroke="#F15A29" strokeWidth="2" />
             ))}
           </svg>
         </div>

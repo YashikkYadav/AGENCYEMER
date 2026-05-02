@@ -9,7 +9,7 @@ const groups = [
 
 export default function Footer() {
   return (
-    <footer data-testid="site-footer" className="bg-white border-t border-[var(--line)]">
+    <footer data-testid="site-footer" className="bg-[var(--paper-2)]/40 border-t border-[var(--line)]">
       <div className="max-w-[1280px] mx-auto px-5 sm:px-8 pt-16 lg:pt-20 pb-8">
         {/* Top: CTA strip */}
         <div className="grid grid-cols-12 gap-8 pb-14 lg:pb-16 border-b border-[var(--line)]">
@@ -31,17 +31,7 @@ export default function Footer() {
         <div className="grid grid-cols-12 gap-10 lg:gap-8 py-14">
           {/* Brand */}
           <div className="col-span-12 lg:col-span-4">
-            <div className="flex items-center gap-2.5">
-              <Logo size={32} variant="ink" />
-              <div className="leading-tight">
-                <div className="text-[16px] font-semibold tracking-tight text-[var(--ink)]">
-                  Yashik Yadav <span className="text-[var(--muted)] font-normal">& Co.</span>
-                </div>
-                <div className="text-[11px] text-[var(--muted)] mt-0.5">
-                  Healthcare Growth Partners · Est. 2018
-                </div>
-              </div>
-            </div>
+            <Logo height={44} variant="ink" />
             <p className="mt-5 text-[14px] leading-relaxed text-[var(--muted)] max-w-sm">
               An independent growth partner for India's most trusted clinics, hospitals and
               doctors. Based in Jaipur, trusted across 20+ cities.

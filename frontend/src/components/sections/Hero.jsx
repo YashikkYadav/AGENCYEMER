@@ -1,82 +1,143 @@
-import { ArrowRight, CheckCircle2, Star } from "lucide-react";
-import HeroVisual from "./HeroVisual";
+import { ArrowRight, Star, Stethoscope, HeartPulse, Pill, TrendingUp, Users } from "lucide-react";
+
+const DOCTOR_1 = "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=520&h=640&fit=crop&crop=faces&q=80";
+const DOCTOR_2 = "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=520&h=640&fit=crop&crop=faces&q=80";
+const DOCTOR_3 = "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=520&h=640&fit=crop&crop=faces&q=80";
 
 export default function Hero() {
   return (
-    <section
-      id="top"
-      data-testid="hero"
-      className="relative pt-28 lg:pt-36 pb-16 lg:pb-24 bg-white"
-    >
-      <div className="max-w-[1280px] mx-auto px-5 sm:px-8">
+    <section id="top" data-testid="hero" className="relative pt-28 lg:pt-32 pb-16 lg:pb-20 overflow-hidden">
+      <div className="max-w-[1280px] mx-auto px-5 sm:px-8 text-center">
         {/* Review chip */}
-        <div className="rise flex items-center gap-2 mb-8">
+        <div className="rise inline-flex items-center gap-2.5 bg-white border border-[var(--line)] rounded-full pl-1.5 pr-4 py-1.5 shadow-[0_6px_20px_-8px_rgba(15,20,25,0.08)]">
           <div className="flex -space-x-2">
-            {["#0E6E4F", "#E2A84B", "#7A3A1C"].map((c, i) => (
-              <div key={i} className="h-7 w-7 rounded-full border-2 border-white" style={{ background: c }} />
+            {[
+              "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=60&h=60&fit=crop&crop=faces&q=80",
+              "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=60&h=60&fit=crop&crop=faces&q=80",
+              "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=60&h=60&fit=crop&crop=faces&q=80",
+            ].map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt=""
+                className="h-6 w-6 rounded-full border-2 border-white object-cover"
+              />
             ))}
           </div>
-          <div className="flex items-center gap-1 text-[var(--ink)]">
+          <div className="flex items-center gap-0.5">
             {Array(5).fill(0).map((_, i) => (
-              <Star key={i} size={13} fill="#E2A84B" stroke="#E2A84B" />
+              <Star key={i} size={12} fill="#E2A84B" stroke="#E2A84B" />
             ))}
           </div>
-          <span className="text-[13px] text-[var(--muted)]">
-            <span className="text-[var(--ink)] font-semibold">4.9</span> from 100+ doctors
+          <span className="text-[12.5px] font-medium text-[var(--ink)]">
+            4.9/5 <span className="text-[var(--muted)] font-normal">from 100+ doctors</span>
           </span>
         </div>
 
-        <div className="grid grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* Left */}
-          <div className="col-span-12 lg:col-span-7">
-            <h1
-              data-testid="hero-headline"
-              className="rise-2 text-[clamp(2.5rem,6vw,4.75rem)] font-light leading-[1.02] tracking-[-0.02em] text-[var(--ink)]"
-            >
-              More patients.<br />
-              Less <span className="serif italic-soft text-[var(--sage)]">guesswork</span>.
-              <br />Every single month.
-            </h1>
+        {/* Orbital illustration + headline */}
+        <div className="relative mt-8 lg:mt-10">
+          {/* Dashed curved line overlay */}
+          <svg
+            aria-hidden
+            className="absolute inset-0 w-full h-full pointer-events-none hidden md:block"
+            viewBox="0 0 1200 520"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M140,80 C 260,10 420,10 560,90 C 700,170 820,260 720,330 C 620,400 860,460 1060,410"
+              stroke="#F15A29"
+              strokeWidth="2"
+              fill="none"
+              className="animate-draw"
+              strokeLinecap="round"
+            />
+          </svg>
 
-            <p
-              data-testid="hero-subheadline"
-              className="rise-3 mt-7 text-[17px] leading-[1.6] text-[var(--muted)] max-w-xl"
-            >
-              We are the growth partner for India's most trusted clinics, hospitals and
-              doctors. SEO, paid ads, WhatsApp & brand — built around the way patients
-              actually find and trust healthcare.
-            </p>
+          {/* Floating icon chips */}
+          <FloatChip style={{ top: "6%", left: "4%" }} className="float-a" color="#FEEDE5">
+            <HeartPulse size={18} color="#F15A29" strokeWidth={2} />
+          </FloatChip>
+          <FloatChip style={{ top: "2%", right: "8%" }} className="float-b" color="#FFF4D6">
+            <TrendingUp size={18} color="#C98A1B" strokeWidth={2} />
+          </FloatChip>
+          <FloatChip style={{ top: "42%", right: "2%" }} className="float-c" color="#E8F1ED">
+            <Stethoscope size={18} color="#0E6E4F" strokeWidth={2} />
+          </FloatChip>
+          <FloatChip style={{ top: "48%", left: "1%" }} className="float-a" color="#FFE2D6">
+            <Pill size={18} color="#D14418" strokeWidth={2} />
+          </FloatChip>
+          <FloatChip style={{ top: "78%", right: "14%" }} className="float-b" color="#F0E8FF">
+            <Users size={18} color="#6B4EAB" strokeWidth={2} />
+          </FloatChip>
 
-            <div className="rise-3 mt-9 flex flex-col sm:flex-row gap-3">
-              <a href="#audit" data-testid="hero-cta-primary" className="btn-sage text-[15px] px-6 py-[14px]">
-                Book a free audit
-                <ArrowRight size={16} />
-              </a>
-              <a href="#case-studies" data-testid="hero-cta-secondary" className="btn-secondary text-[15px] px-6 py-[14px]">
-                See client results
-              </a>
-            </div>
+          {/* Headline */}
+          <h1
+            data-testid="hero-headline"
+            className="rise-2 relative mx-auto max-w-4xl text-[clamp(2.75rem,6.4vw,5.25rem)] leading-[1.02] tracking-[-0.02em] font-semibold text-[var(--ink)]"
+          >
+            Turning clicks <br />
+            into <span className="script text-[var(--sage)] text-[1.15em] leading-[0.9] inline-block align-baseline">
+              patients
+            </span>
+            <span className="relative inline-block">
+              .
+            </span>
+          </h1>
 
-            <div className="rise-4 mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
-              {[
-                "100+ clinics served",
-                "₹10Cr+ patient revenue",
-                "20+ Indian cities",
-              ].map((t) => (
-                <div key={t} className="flex items-center gap-2 text-[13.5px] text-[var(--ink-soft)]">
-                  <CheckCircle2 size={15} className="text-[var(--sage)]" strokeWidth={2.25} />
-                  {t}
-                </div>
-              ))}
+          <p className="rise-3 mt-6 max-w-xl mx-auto text-[16.5px] leading-[1.6] text-[var(--muted)]">
+            We help clinics, hospitals and doctors across India grow with data-driven healthcare
+            marketing — SEO, paid ads, WhatsApp automation & brand — every month.
+          </p>
+
+          <div className="rise-4 mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="#services" data-testid="hero-cta-primary" className="btn-primary px-6 py-[14px] text-[15px]">
+              View services
+              <ArrowRight size={16} />
+            </a>
+            <a href="#audit" data-testid="hero-cta-secondary" className="btn-secondary px-6 py-[14px] text-[15px]">
+              Contact us
+            </a>
+          </div>
+        </div>
+
+        {/* 3 Doctor photos row */}
+        <div className="rise-5 mt-14 lg:mt-20 grid grid-cols-3 gap-3 lg:gap-5 max-w-5xl mx-auto">
+          <div className="tilt relative overflow-hidden rounded-3xl aspect-[4/5] bg-[var(--paper-2)]">
+            <img src={DOCTOR_1} alt="Doctor with tablet" className="w-full h-full object-cover" loading="lazy" />
+            <div className="absolute bottom-3 left-3 right-3 flex items-center gap-2 bg-white/90 backdrop-blur rounded-full px-3 py-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--sage)] pulse-dot" />
+              <span className="text-[11px] font-medium text-[var(--ink)]">SEO · Organic growth</span>
             </div>
           </div>
-
-          {/* Right */}
-          <div className="col-span-12 lg:col-span-5 rise-4">
-            <HeroVisual />
+          <div className="tilt relative overflow-hidden rounded-3xl aspect-[4/5] bg-[var(--paper-2)] sm:mt-8 lg:mt-10">
+            <img src={DOCTOR_2} alt="Medical consultation" className="w-full h-full object-cover" loading="lazy" />
+            <div className="absolute bottom-3 left-3 right-3 flex items-center gap-2 bg-white/90 backdrop-blur rounded-full px-3 py-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#E2A84B]" />
+              <span className="text-[11px] font-medium text-[var(--ink)]">Paid ads · ROAS 6.4×</span>
+            </div>
+          </div>
+          <div className="tilt relative overflow-hidden rounded-3xl aspect-[4/5] bg-[var(--paper-2)]">
+            <img src={DOCTOR_3} alt="Doctor smiling" className="w-full h-full object-cover" loading="lazy" />
+            <div className="absolute bottom-3 left-3 right-3 flex items-center gap-2 bg-white/90 backdrop-blur rounded-full px-3 py-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#0E6E4F]" />
+              <span className="text-[11px] font-medium text-[var(--ink)]">WhatsApp · +12 leads/day</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function FloatChip({ children, style, className = "", color = "#FEEDE5" }) {
+  return (
+    <div
+      className={`absolute z-10 h-11 w-11 rounded-2xl bg-white border border-[var(--line)] shadow-[0_10px_30px_-12px_rgba(15,20,25,0.15)] flex items-center justify-center ${className}`}
+      style={{ ...style }}
+    >
+      <div className="h-8 w-8 rounded-xl flex items-center justify-center" style={{ background: color }}>
+        {children}
+      </div>
+    </div>
   );
 }

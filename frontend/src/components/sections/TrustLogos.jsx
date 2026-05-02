@@ -11,7 +11,7 @@ const brands = [
 
 export default function TrustLogos() {
   return (
-    <section data-testid="trust-logos" className="py-12 bg-white border-y border-[var(--line)]">
+    <section data-testid="trust-logos" className="py-10 bg-[var(--paper-2)]/60 border-y border-[var(--line)]">
       <div className="max-w-[1280px] mx-auto px-5 sm:px-8">
         <p className="text-center text-[12px] font-medium tracking-[0.16em] uppercase text-[var(--muted)]">
           Trusted by 100+ clinics & hospitals across India

@@ -25,21 +25,13 @@ export default function Navbar() {
       data-testid="site-navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/85 backdrop-blur-xl border-b border-[var(--line)]"
+          ? "bg-[var(--paper)]/85 backdrop-blur-xl border-b border-[var(--line)]"
           : "bg-transparent border-b border-transparent"
       }`}
     >
       <div className="max-w-[1280px] mx-auto px-5 sm:px-8 h-16 lg:h-20 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2.5" data-testid="navbar-logo">
-          <Logo size={30} variant="ink" />
-          <div className="leading-tight">
-            <div className="text-[15px] font-semibold tracking-tight text-[var(--ink)]">
-              Yashik Yadav <span className="text-[var(--muted)] font-normal">& Co.</span>
-            </div>
-            <div className="hidden sm:block text-[10.5px] text-[var(--muted)] tracking-wide">
-              Healthcare Growth Partners
-            </div>
-          </div>
+        <a href="#top" className="flex items-center" data-testid="navbar-logo">
+          <Logo height={38} variant="ink" />
         </a>
 
         <nav className="hidden lg:flex items-center gap-8">
