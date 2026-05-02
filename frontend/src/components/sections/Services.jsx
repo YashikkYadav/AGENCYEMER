@@ -1,114 +1,84 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Search, MapPin, Megaphone, MessageCircle, Code, UserCircle } from "lucide-react";
 
 const services = [
   {
-    n: "01",
+    icon: Search,
     title: "Healthcare SEO",
-    line: "Own every treatment search in your city.",
-    bullets: ["Local pack domination", "Programmatic location pages", "Authority backlinks", "Editorial content engine"],
+    desc: "Rank #1 for every treatment patients search in your city.",
   },
   {
-    n: "02",
+    icon: MapPin,
+    title: "Google Business Profile",
+    desc: "Dominate the local map pack — drive walk-ins on autopilot.",
+  },
+  {
+    icon: Megaphone,
     title: "Performance Ads",
-    line: "Predictable patient leads — at the lowest CPL in your category.",
-    bullets: ["Meta + Google rotations", "Creative testing system", "Lead-quality scoring", "Custom landing pages"],
+    desc: "Predictable patient leads from Meta & Google, at the lowest CPL.",
   },
   {
-    n: "03",
+    icon: MessageCircle,
     title: "WhatsApp Automation",
-    line: "Recover 30% of revenue you didn't know you were losing.",
-    bullets: ["Chatbot funnels", "Reactivation flows", "AI auto-replies", "CRM + EMR sync"],
+    desc: "Reminders, follow-ups, reactivation — all automated, all HIPAA-friendly.",
   },
   {
-    n: "04",
-    title: "Doctor Brand",
-    line: "Build the kind of trust that out-prices every competitor.",
-    bullets: ["Personal positioning", "Reels & YouTube engine", "PR placements", "Community building"],
+    icon: Code,
+    title: "Clinic Websites",
+    desc: "Fast, booking-optimised websites engineered to convert 3× harder.",
   },
   {
-    n: "05",
-    title: "Web Development",
-    line: "Sites engineered to convert — not to win design awards.",
-    bullets: ["Conversion-led design", "Sub-1s load speed", "EMR/booking integrations", "Multi-location architecture"],
-  },
-  {
-    n: "06",
-    title: "Reputation",
-    line: "Become the obvious choice on Google, Justdial and Practo.",
-    bullets: ["GMB optimization", "Review velocity", "Crisis management", "Listings hygiene"],
+    icon: UserCircle,
+    title: "Doctor Personal Brand",
+    desc: "Instagram, YouTube & PR systems that earn patient trust at scale.",
   },
 ];
 
 export default function Services() {
   return (
-    <section
-      id="services"
-      data-testid="services"
-      className="relative py-24 lg:py-32"
-      style={{ background: "var(--ink)" }}
-    >
-      <div className="max-w-[1480px] mx-auto px-5 sm:px-8 lg:px-12">
-        {/* Header */}
-        <div className="grid grid-cols-12 gap-6 lg:gap-10 mb-16 lg:mb-20">
-          <div className="col-span-12 lg:col-span-3">
-            <div className="flex items-center gap-2 mono text-[10px] uppercase tracking-[0.22em] text-[var(--muted-on-dark)]">
-              <span className="h-px w-8 bg-[var(--acid)]" />
-              Capabilities
+    <section id="services" data-testid="services" className="py-20 lg:py-28 bg-white">
+      <div className="max-w-[1280px] mx-auto px-5 sm:px-8">
+        <div className="grid grid-cols-12 gap-8 mb-14">
+          <div className="col-span-12 lg:col-span-5">
+            <div className="text-[12px] font-semibold tracking-[0.18em] uppercase text-[var(--sage)] mb-4">
+              What we do
             </div>
-          </div>
-          <div className="col-span-12 lg:col-span-9">
-            <h2
-              data-testid="services-headline"
-              className="serif text-[clamp(2rem,5.5vw,5rem)] leading-[0.98] tracking-[-0.025em] text-[var(--cream)] font-light"
-            >
-              Six engines.{" "}
-              <span className="italic-soft text-[var(--acid)]">One</span> system.
-              <br />
-              Every patient — measured.
+            <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] tracking-[-0.02em] font-light text-[var(--ink)]">
+              Six services.<br />
+              One growth operating system.
             </h2>
+          </div>
+          <div className="col-span-12 lg:col-span-6 lg:col-start-7 lg:pt-14">
+            <p className="text-[16px] leading-relaxed text-[var(--muted)]">
+              We don't sell deliverables. We run a single integrated system that compounds
+              your clinic's revenue every month — built and managed by a team that works
+              only with healthcare.
+            </p>
           </div>
         </div>
 
-        {/* Service rows */}
-        <div className="border-t border-[rgba(242,237,227,0.10)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((s) => (
             <article
-              key={s.n}
-              data-testid={`service-${s.n}`}
-              className="group grid grid-cols-12 gap-6 lg:gap-10 items-start py-7 lg:py-9 border-b border-[rgba(242,237,227,0.10)] transition-colors hover:bg-[rgba(217,243,108,0.03)]"
+              key={s.title}
+              data-testid={`service-${s.title.toLowerCase().replace(/\s+/g, "-")}`}
+              className="card group p-7 lg:p-8 flex flex-col gap-5"
             >
-              <div className="col-span-3 lg:col-span-1 mono text-xs text-[var(--acid)] pt-2">
-                {s.n}
+              <div className="flex items-center justify-between">
+                <div className="h-11 w-11 rounded-xl bg-[var(--sage-soft)] flex items-center justify-center">
+                  <s.icon size={20} className="text-[var(--sage-deep)]" strokeWidth={2} />
+                </div>
+                <ArrowUpRight
+                  size={18}
+                  className="text-[var(--muted-2)] transition-all group-hover:text-[var(--sage)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
               </div>
-              <div className="col-span-9 lg:col-span-4">
-                <h3 className="serif text-3xl lg:text-5xl tracking-tight text-[var(--cream)] leading-none">
+              <div>
+                <h3 className="text-[19px] font-semibold tracking-tight text-[var(--ink)]">
                   {s.title}
                 </h3>
-              </div>
-              <div className="col-span-12 lg:col-span-4 lg:pt-3">
-                <p className="text-[15px] lg:text-base leading-relaxed text-[var(--cream)]/70">
-                  {s.line}
+                <p className="mt-2 text-[14.5px] leading-relaxed text-[var(--muted)]">
+                  {s.desc}
                 </p>
-                <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-1.5">
-                  {s.bullets.map((b) => (
-                    <li
-                      key={b}
-                      className="text-[12px] text-[var(--cream)]/55 flex items-center gap-1.5"
-                    >
-                      <span className="h-1 w-1 rounded-full bg-[var(--acid)]" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="col-span-12 lg:col-span-3 flex lg:justify-end pt-3">
-                <a
-                  href="#audit"
-                  data-testid={`service-link-${s.n}`}
-                  className="inline-flex items-center gap-1.5 mono text-[11px] uppercase tracking-[0.18em] text-[var(--cream)]/75 hover:text-[var(--acid)] transition-all group-hover:gap-2.5"
-                >
-                  Engage <ArrowUpRight size={13} />
-                </a>
               </div>
             </article>
           ))}

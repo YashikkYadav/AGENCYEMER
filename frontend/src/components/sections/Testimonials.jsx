@@ -1,106 +1,74 @@
+import { Star } from "lucide-react";
+
 const items = [
   {
     quote:
-      "We went from 30 patients a week to 90 — and the only thing that changed was them. They run our growth like operators, not vendors.",
+      "We went from 30 patients a week to 90+ — and the only thing that changed was them. They run our growth like operators, not vendors.",
     name: "Dr. Rohan Mehta",
-    role: "Founder, IVF clinic",
+    role: "Founder · IVF Clinic",
     city: "Jaipur",
     initials: "RM",
+    bg: "#0E6E4F",
   },
   {
     quote:
-      "Their WhatsApp automation alone recovered ₹2L in missed follow-ups in month one. The ROAS spreadsheet didn't even feel real.",
+      "Their WhatsApp automation alone recovered ₹2L in missed follow-ups in month one. ROAS was obvious from week two.",
     name: "Dr. Priya Sharma",
-    role: "Cosmetic dermatologist",
+    role: "Cosmetic Dermatologist",
     city: "Mumbai",
     initials: "PS",
+    bg: "#7A3A1C",
   },
   {
     quote:
-      "I've worked with three agencies. This is the first one that understood that doctors don't sell — we earn trust. They build for that.",
+      "I've worked with three agencies. This is the first one that understood doctors don't sell — we earn trust. They build for that.",
     name: "Dr. Arjun Kapoor",
-    role: "Orthopaedic surgeon",
+    role: "Orthopaedic Surgeon",
     city: "Delhi",
     initials: "AK",
+    bg: "#0F1419",
   },
 ];
 
 export default function Testimonials() {
   return (
-    <section
-      id="testimonials"
-      data-testid="testimonials"
-      className="relative py-24 lg:py-32 overflow-hidden"
-      style={{ background: "var(--cream)", color: "var(--text-on-light)" }}
-    >
-      <div className="max-w-[1480px] mx-auto px-5 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-12 gap-6 lg:gap-10 mb-14 lg:mb-16">
-          <div className="col-span-12 lg:col-span-3">
-            <div className="flex items-center gap-2 mono text-[10px] uppercase tracking-[0.22em] text-[var(--muted-on-light)]">
-              <span className="h-px w-8 bg-[var(--ink)]" />
-              On the record
-            </div>
+    <section id="testimonials" data-testid="testimonials" className="py-20 lg:py-28 bg-white">
+      <div className="max-w-[1280px] mx-auto px-5 sm:px-8">
+        <div className="max-w-3xl mb-14">
+          <div className="text-[12px] font-semibold tracking-[0.18em] uppercase text-[var(--sage)] mb-4">
+            Doctors on the record
           </div>
-          <div className="col-span-12 lg:col-span-9">
-            <h2
-              data-testid="testimonials-headline"
-              className="serif text-[clamp(2rem,5.5vw,5rem)] leading-[0.98] tracking-[-0.025em] font-light"
-            >
-              <span className="italic-soft">What</span> the doctors who run
-              <br /> India's busiest clinics <span className="italic-soft text-[var(--clay)]">say</span>.
-            </h2>
-          </div>
+          <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] tracking-[-0.02em] font-light text-[var(--ink)]">
+            What doctors who run India's<br />
+            busiest clinics <span className="serif italic-soft text-[var(--sage)]">say</span>.
+          </h2>
         </div>
 
-        {/* Featured quote */}
-        <figure
-          data-testid="testimonial-featured"
-          className="grid grid-cols-12 gap-6 lg:gap-10 border-t border-[var(--ink)]/15 pt-10 lg:pt-14"
-        >
-          <div className="col-span-12 lg:col-span-9">
-            <blockquote className="serif text-[clamp(1.75rem,4vw,3.6rem)] leading-[1.08] tracking-[-0.025em] font-light">
-              <span className="italic-soft text-[var(--clay)]">“</span>
-              {items[0].quote}
-              <span className="italic-soft text-[var(--clay)]">”</span>
-            </blockquote>
-            <figcaption className="mt-8 flex items-center gap-4">
-              <div
-                className="h-12 w-12 rounded-full flex items-center justify-center text-[var(--cream)] mono text-sm tracking-wider"
-                style={{ background: "var(--ink)" }}
-              >
-                {items[0].initials}
-              </div>
-              <div>
-                <div className="serif text-lg">{items[0].name}</div>
-                <div className="mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted-on-light)]">
-                  {items[0].role} · {items[0].city}
-                </div>
-              </div>
-            </figcaption>
-          </div>
-        </figure>
-
-        {/* Two-up secondary quotes */}
-        <div className="mt-14 lg:mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          {items.slice(1).map((t, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {items.map((t) => (
             <figure
               key={t.name}
-              data-testid={`testimonial-${idx + 1}`}
-              className="border-t border-[var(--ink)]/15 pt-8"
+              data-testid={`testimonial-${t.initials}`}
+              className="card p-7 lg:p-8 flex flex-col gap-6"
             >
-              <blockquote className="serif text-2xl lg:text-3xl leading-snug tracking-tight font-light">
-                {t.quote}
+              <div className="flex items-center gap-1">
+                {Array(5).fill(0).map((_, i) => (
+                  <Star key={i} size={14} fill="#E2A84B" stroke="#E2A84B" />
+                ))}
+              </div>
+              <blockquote className="text-[16.5px] leading-[1.55] text-[var(--ink)]">
+                "{t.quote}"
               </blockquote>
-              <figcaption className="mt-6 flex items-center gap-3">
+              <figcaption className="mt-auto flex items-center gap-3 pt-6 border-t border-[var(--line)]">
                 <div
-                  className="h-10 w-10 rounded-full flex items-center justify-center text-[var(--cream)] mono text-xs tracking-wider"
-                  style={{ background: "var(--ink)" }}
+                  className="h-11 w-11 rounded-full flex items-center justify-center text-white font-semibold text-sm"
+                  style={{ background: t.bg }}
                 >
                   {t.initials}
                 </div>
-                <div>
-                  <div className="serif text-base">{t.name}</div>
-                  <div className="mono text-[10px] uppercase tracking-[0.18em] text-[var(--muted-on-light)]">
+                <div className="leading-tight">
+                  <div className="text-[14px] font-semibold text-[var(--ink)]">{t.name}</div>
+                  <div className="text-[12px] text-[var(--muted)] mt-0.5">
                     {t.role} · {t.city}
                   </div>
                 </div>

@@ -1,137 +1,121 @@
-import { Check, ArrowUpRight } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 
 const tiers = [
   {
-    name: "Foundations",
-    price: "₹25K",
-    summary:
-      "For solo practices building their first reliable patient pipeline. SEO + GMB + reputation.",
-    bullets: [
+    name: "Starter",
+    price: "₹25,000",
+    period: "/month",
+    summary: "For solo clinics building a first reliable patient pipeline.",
+    features: [
       "Healthcare SEO (10 keywords)",
-      "Google My Business operating system",
+      "Google Business Profile optimisation",
       "Review velocity engine",
-      "Monthly performance review",
+      "Monthly performance report",
     ],
-    cta: "Start Foundations",
-    accent: false,
+    cta: "Start Starter",
+    highlighted: false,
   },
   {
     name: "Growth",
-    price: "₹40K",
-    summary:
-      "Our flagship. SEO + paid + automation + content — the system 80% of clients run.",
-    bullets: [
-      "Everything in Foundations",
-      "Meta + Google performance ads",
+    price: "₹40,000",
+    period: "/month",
+    summary: "Our most-chosen plan. SEO + ads + automation + content.",
+    features: [
+      "Everything in Starter",
+      "Meta & Google performance ads",
       "WhatsApp automation & flows",
-      "Social content (12 assets/mo)",
-      "Bi-weekly strategy operating reviews",
+      "Social content (12 posts/month)",
+      "Bi-weekly strategy calls",
     ],
-    cta: "Engage Growth",
-    accent: true,
-    tag: "Most engaged",
+    cta: "Choose Growth",
+    highlighted: true,
+    tag: "Most chosen",
   },
   {
-    name: "Atelier",
-    price: "₹50K+",
-    summary:
-      "Bespoke partnerships for multi-location groups, founders & ₹10Cr+ practices.",
-    bullets: [
+    name: "Premium",
+    price: "₹50,000+",
+    period: "/month",
+    summary: "Bespoke partnerships for multi-location groups & founder brands.",
+    features: [
       "Everything in Growth",
       "Founder personal brand & PR",
-      "Conversion-led web build",
+      "Conversion-led website build",
       "Dedicated growth lead",
       "Weekly war-room cadence",
     ],
-    cta: "Apply for Atelier",
-    accent: false,
+    cta: "Apply for Premium",
+    highlighted: false,
   },
 ];
 
 export default function Pricing() {
   return (
-    <section
-      id="pricing"
-      data-testid="pricing"
-      className="relative py-24 lg:py-32"
-      style={{ background: "var(--ink)" }}
-    >
-      <div className="max-w-[1480px] mx-auto px-5 sm:px-8 lg:px-12">
-        {/* Header */}
-        <div className="grid grid-cols-12 gap-6 lg:gap-10 mb-14 lg:mb-20">
-          <div className="col-span-12 lg:col-span-3">
-            <div className="flex items-center gap-2 mono text-[10px] uppercase tracking-[0.22em] text-[var(--muted-on-dark)]">
-              <span className="h-px w-8 bg-[var(--acid)]" />
-              Engagements
-            </div>
+    <section id="pricing" data-testid="pricing" className="py-20 lg:py-28 bg-[var(--paper-2)]">
+      <div className="max-w-[1280px] mx-auto px-5 sm:px-8">
+        <div className="max-w-3xl mb-14 text-center mx-auto">
+          <div className="text-[12px] font-semibold tracking-[0.18em] uppercase text-[var(--sage)] mb-4">
+            Pricing
           </div>
-          <div className="col-span-12 lg:col-span-9">
-            <h2
-              data-testid="pricing-headline"
-              className="serif text-[clamp(2rem,5.5vw,5rem)] leading-[0.98] tracking-[-0.025em] text-[var(--cream)] font-light"
-            >
-              Three ways to <span className="italic-soft">work</span> with us.
-              <br /> No retainers you can't <span className="under-acid italic-soft text-[var(--ink)]">justify</span>.
-            </h2>
-          </div>
+          <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] tracking-[-0.02em] font-light text-[var(--ink)]">
+            Simple, transparent pricing.<br />
+            <span className="serif italic-soft text-[var(--sage)]">No</span> long lock-ins.
+          </h2>
+          <p className="mt-5 text-[15.5px] text-[var(--muted)]">
+            All engagements are 90-day commitments. No setup fees. Pause anytime after the first cycle.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 max-w-[1100px] mx-auto">
           {tiers.map((t) => (
             <div
               key={t.name}
               data-testid={`pricing-${t.name.toLowerCase()}`}
-              className={`relative rounded-3xl p-7 lg:p-9 flex flex-col transition-all hover:-translate-y-1`}
-              style={{
-                background: t.accent ? "var(--cream)" : "var(--ink-2)",
-                color: t.accent ? "var(--ink)" : "var(--cream)",
-                border: t.accent ? "1px solid var(--cream)" : "1px solid rgba(242,237,227,0.10)",
-              }}
+              className={`relative rounded-3xl p-8 flex flex-col transition-all hover:-translate-y-1 ${
+                t.highlighted
+                  ? "bg-[var(--ink)] text-white border border-[var(--ink)] shadow-[0_30px_70px_-25px_rgba(15,20,25,0.35)]"
+                  : "bg-white border border-[var(--line)] hover:border-[var(--line-2)]"
+              }`}
             >
               {t.tag && (
                 <span
-                  data-testid="pricing-tag-most-engaged"
-                  className="absolute -top-3 left-7 mono text-[10px] uppercase tracking-[0.22em] px-3 py-1 rounded-full"
-                  style={{ background: "var(--acid)", color: "var(--ink)" }}
+                  data-testid="pricing-tag"
+                  className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10.5px] font-semibold tracking-[0.14em] uppercase bg-[var(--sage)] text-white"
                 >
-                  ✦ {t.tag}
+                  {t.tag}
                 </span>
               )}
 
-              <div className="flex items-baseline justify-between gap-4">
-                <h3 className="serif text-3xl lg:text-4xl tracking-tight">{t.name}</h3>
-                <div className="text-right">
-                  <div className="serif text-4xl lg:text-5xl tracking-tight">
-                    {t.price}
-                  </div>
-                  <div
-                    className="mono text-[10px] uppercase tracking-[0.22em] mt-0.5"
-                    style={{ color: t.accent ? "var(--muted-on-light)" : "var(--muted-on-dark)" }}
-                  >
-                    /month
-                  </div>
-                </div>
+              <div className="flex items-center justify-between">
+                <h3 className={`text-xl font-semibold tracking-tight ${t.highlighted ? "text-white" : "text-[var(--ink)]"}`}>
+                  {t.name}
+                </h3>
               </div>
-
-              <p
-                className="mt-5 text-[14px] leading-relaxed"
-                style={{ color: t.accent ? "var(--muted-on-light)" : "var(--cream)/70" }}
-              >
+              <p className={`mt-3 text-[13.5px] leading-relaxed ${t.highlighted ? "text-white/65" : "text-[var(--muted)]"}`}>
                 {t.summary}
               </p>
 
-              <ul className="mt-7 space-y-3 flex-1">
-                {t.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-3 text-sm">
+              <div className="mt-6 flex items-baseline gap-1">
+                <span className={`text-[44px] font-light leading-none tracking-tight ${t.highlighted ? "text-white" : "text-[var(--ink)]"}`}>
+                  {t.price}
+                </span>
+                <span className={`text-[14px] ${t.highlighted ? "text-white/60" : "text-[var(--muted)]"}`}>
+                  {t.period}
+                </span>
+              </div>
+
+              <div className={`my-7 h-px ${t.highlighted ? "bg-white/15" : "bg-[var(--line)]"}`} />
+
+              <ul className="space-y-3 flex-1">
+                {t.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2.5 text-[14px]">
                     <span
-                      className="mt-0.5 inline-flex h-5 w-5 rounded-full items-center justify-center shrink-0"
-                      style={{
-                        background: t.accent ? "var(--ink)" : "rgba(217,243,108,0.15)",
-                      }}
+                      className={`mt-0.5 inline-flex h-4 w-4 rounded-full items-center justify-center shrink-0 ${
+                        t.highlighted ? "bg-[var(--sage)]" : "bg-[var(--sage-soft)]"
+                      }`}
                     >
-                      <Check size={12} color={t.accent ? "var(--acid)" : "#D9F36C"} strokeWidth={3} />
+                      <Check size={10} strokeWidth={3} className={t.highlighted ? "text-white" : "text-[var(--sage-deep)]"} />
                     </span>
-                    <span>{b}</span>
+                    <span className={t.highlighted ? "text-white/85" : "text-[var(--ink-soft)]"}>{f}</span>
                   </li>
                 ))}
               </ul>
@@ -139,21 +123,16 @@ export default function Pricing() {
               <a
                 href="#audit"
                 data-testid={`pricing-cta-${t.name.toLowerCase()}`}
-                className="mt-8 inline-flex items-center justify-between gap-2 rounded-full px-5 py-3.5 text-sm font-medium transition-transform hover:-translate-y-0.5"
-                style={{
-                  background: t.accent ? "var(--ink)" : "var(--acid)",
-                  color: t.accent ? "var(--cream)" : "var(--ink)",
-                }}
+                className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full py-3.5 px-5 text-[14px] font-medium transition-all hover:-translate-y-0.5 ${
+                  t.highlighted
+                    ? "bg-white text-[var(--ink)] hover:bg-[var(--sage)] hover:text-white"
+                    : "bg-[var(--ink)] text-white hover:bg-[var(--sage)]"
+                }`}
               >
-                {t.cta}
-                <ArrowUpRight size={16} />
+                {t.cta} <ArrowRight size={15} />
               </a>
             </div>
           ))}
-        </div>
-
-        <div className="mt-10 mono text-[10px] uppercase tracking-[0.22em] text-[var(--muted-on-dark)] text-center">
-          ✦ All engagements are 90-day commitments · No setup fees · Pause anytime after the first cycle ✦
         </div>
       </div>
     </section>

@@ -1,74 +1,52 @@
-import { useEffect, useState } from "react";
-import { ArrowUpRight, Instagram, Linkedin, Youtube, MessageCircle } from "lucide-react";
+import { Instagram, Linkedin, Youtube, MessageCircle, ArrowUpRight } from "lucide-react";
 import Logo from "./Logo";
 
-export default function Footer() {
-  const [time, setTime] = useState("");
-  useEffect(() => {
-    const tick = () => {
-      try {
-        const d = new Intl.DateTimeFormat("en-IN", {
-          timeZone: "Asia/Kolkata",
-          hour: "2-digit",
-          minute: "2-digit",
-          hour12: false,
-        }).format(new Date());
-        setTime(d);
-      } catch {
-        setTime("");
-      }
-    };
-    tick();
-    const id = setInterval(tick, 30000);
-    return () => clearInterval(id);
-  }, []);
+const groups = [
+  { title: "Services", items: ["Healthcare SEO", "Performance Ads", "WhatsApp Automation", "Clinic Websites", "Personal Brand"] },
+  { title: "Specialties", items: ["IVF & Fertility", "Dental", "Cosmetic & Derma", "Orthopaedics", "Pediatrics"] },
+  { title: "Company", items: ["About", "Case Studies", "Journal", "Careers", "Contact"] },
+];
 
+export default function Footer() {
   return (
-    <footer
-      data-testid="site-footer"
-      className="relative pt-20 lg:pt-28 pb-8"
-      style={{ background: "var(--ink)" }}
-    >
-      <div className="max-w-[1480px] mx-auto px-5 sm:px-8 lg:px-12">
-        {/* Massive wordmark */}
-        <div className="border-t border-[rgba(242,237,227,0.10)] pt-12 mb-12 lg:mb-16">
-          <div className="flex items-baseline justify-between gap-6 flex-wrap">
-            <h3
-              data-testid="footer-wordmark"
-              className="serif text-[clamp(3.5rem,12vw,11rem)] leading-[0.85] tracking-[-0.04em] text-[var(--cream)] font-light"
-            >
-              Yashik <span className="italic-soft text-[var(--acid)]">Yadav</span> & Co.
+    <footer data-testid="site-footer" className="bg-white border-t border-[var(--line)]">
+      <div className="max-w-[1280px] mx-auto px-5 sm:px-8 pt-16 lg:pt-20 pb-8">
+        {/* Top: CTA strip */}
+        <div className="grid grid-cols-12 gap-8 pb-14 lg:pb-16 border-b border-[var(--line)]">
+          <div className="col-span-12 lg:col-span-8">
+            <h3 className="text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.05] tracking-[-0.02em] font-light text-[var(--ink)]">
+              Ready to fill your waiting room?<br />
+              <span className="text-[var(--muted)]">Let's build something that compounds.</span>
             </h3>
-            <div className="hidden md:block text-right">
-              <div className="mono text-[10px] uppercase tracking-[0.22em] text-[var(--muted-on-dark)]">
-                Jaipur · India
-              </div>
-              <div className="mono text-[10px] uppercase tracking-[0.22em] text-[var(--cream)]/65 mt-1">
-                IST · {time || "—"}
-              </div>
-            </div>
+          </div>
+          <div className="col-span-12 lg:col-span-4 flex lg:justify-end lg:items-center">
+            <a href="#audit" data-testid="footer-cta" className="btn-sage text-[14px] px-6 py-[14px]">
+              Book a free audit
+              <ArrowUpRight size={15} />
+            </a>
           </div>
         </div>
 
         {/* Columns */}
-        <div className="grid grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-6 border-t border-[rgba(242,237,227,0.10)] pt-10">
+        <div className="grid grid-cols-12 gap-10 lg:gap-8 py-14">
           {/* Brand */}
-          <div className="col-span-2 lg:col-span-4">
-            <div className="flex items-center gap-3 mb-5">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[var(--cream)]">
-                <Logo size={24} variant="dark" />
-              </span>
+          <div className="col-span-12 lg:col-span-4">
+            <div className="flex items-center gap-2.5">
+              <Logo size={32} variant="ink" />
               <div className="leading-tight">
-                <div className="serif text-base text-[var(--cream)]">Yashik Yadav & Co.</div>
-                <div className="mono text-[9px] uppercase tracking-[0.18em] text-[var(--muted-on-dark)]">
-                  Healthcare Growth Studio
+                <div className="text-[16px] font-semibold tracking-tight text-[var(--ink)]">
+                  Yashik Yadav <span className="text-[var(--muted)] font-normal">& Co.</span>
+                </div>
+                <div className="text-[11px] text-[var(--muted)] mt-0.5">
+                  Healthcare Growth Partners · Est. 2018
                 </div>
               </div>
             </div>
-            <p className="text-sm text-[var(--cream)]/60 leading-relaxed max-w-sm">
-              An independent studio for ambitious doctors and clinics across India.
-              Specialists in patient acquisition, brand and marketing systems that compound.
+            <p className="mt-5 text-[14px] leading-relaxed text-[var(--muted)] max-w-sm">
+              An independent growth partner for India's most trusted clinics, hospitals and
+              doctors. Based in Jaipur, trusted across 20+ cities.
             </p>
+
             <div className="mt-6 flex items-center gap-2">
               {[
                 { Icon: Instagram, label: "instagram" },
@@ -81,81 +59,60 @@ export default function Footer() {
                   href="#"
                   aria-label={label}
                   data-testid={`footer-social-${label}`}
-                  className="inline-flex h-9 w-9 rounded-full items-center justify-center border border-[rgba(242,237,227,0.18)] text-[var(--cream)]/80 hover:bg-[var(--acid)] hover:text-[var(--ink)] hover:border-[var(--acid)] transition-colors"
+                  className="h-9 w-9 rounded-full border border-[var(--line)] flex items-center justify-center text-[var(--ink-soft)] hover:bg-[var(--sage)] hover:text-white hover:border-[var(--sage)] transition-colors"
                 >
-                  <Icon size={14} />
+                  <Icon size={15} />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Sitemap groups */}
-          {[
-            {
-              title: "Studio",
-              items: ["Manifesto", "Team", "Press", "Careers", "Journal"],
-            },
-            {
-              title: "Capabilities",
-              items: ["SEO", "Performance ads", "WhatsApp", "Brand", "Web build"],
-            },
-            {
-              title: "Sectors",
-              items: ["IVF & Fertility", "Dental", "Cosmetic & Derma", "Ortho", "Multi-spec hospitals"],
-            },
-          ].map((c) => (
-            <div key={c.title} className="lg:col-span-2">
-              <h4 className="mono text-[10px] uppercase tracking-[0.22em] text-[var(--muted-on-dark)] mb-5">
-                {c.title}
-              </h4>
-              <ul className="space-y-2.5">
-                {c.items.map((i) => (
-                  <li key={i}>
-                    <a
-                      href="#"
-                      data-testid={`footer-${c.title.toLowerCase()}-${i.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "")}`}
-                      className="text-sm text-[var(--cream)]/80 hover:text-[var(--acid)] transition-colors"
-                    >
-                      {i}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Link groups */}
+          <div className="col-span-12 lg:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-8">
+            {groups.map((g) => (
+              <div key={g.title}>
+                <h4 className="text-[11.5px] font-semibold tracking-[0.16em] uppercase text-[var(--muted)] mb-4">
+                  {g.title}
+                </h4>
+                <ul className="space-y-2.5">
+                  {g.items.map((i) => (
+                    <li key={i}>
+                      <a
+                        href="#"
+                        data-testid={`footer-${g.title.toLowerCase()}-${i.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+                        className="text-[14px] text-[var(--ink-soft)] hover:text-[var(--sage)] transition-colors"
+                      >
+                        {i}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
 
-          {/* Contact card */}
-          <div className="col-span-2 lg:col-span-2">
-            <h4 className="mono text-[10px] uppercase tracking-[0.22em] text-[var(--muted-on-dark)] mb-5">
-              Begin
+          {/* Contact */}
+          <div className="col-span-12 lg:col-span-2">
+            <h4 className="text-[11.5px] font-semibold tracking-[0.16em] uppercase text-[var(--muted)] mb-4">
+              Contact
             </h4>
-            <a
-              href="#audit"
-              data-testid="footer-cta"
-              className="group inline-flex items-center gap-2 serif text-2xl text-[var(--cream)] hover:text-[var(--acid)] transition-colors"
-            >
-              Start a project
-              <ArrowUpRight
-                size={20}
-                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </a>
-            <div className="mt-6 space-y-1 text-sm text-[var(--cream)]/65">
-              <div>hello@yashikyadav.co</div>
-              <div>+91 98 ___ ___ __</div>
-            </div>
+            <ul className="space-y-2.5 text-[14px] text-[var(--ink-soft)]">
+              <li><a href="mailto:hello@yashikyadav.co" className="hover:text-[var(--sage)]">hello@yashikyadav.co</a></li>
+              <li><a href="tel:+9198" className="hover:text-[var(--sage)]">+91 98 ___ ___ __</a></li>
+              <li className="text-[var(--muted)]">Jaipur · India</li>
+            </ul>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-14 pt-6 border-t border-[rgba(242,237,227,0.10)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <p className="mono text-[10px] uppercase tracking-[0.22em] text-[var(--muted-on-dark)]">
-            © 2025 Yashik Yadav & Co. · An independent healthcare studio.
+        <div className="pt-6 border-t border-[var(--line)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <p className="text-[12px] text-[var(--muted)]">
+            © 2025 Yashik Yadav & Co. All rights reserved.
           </p>
-          <div className="flex items-center gap-5 mono text-[10px] uppercase tracking-[0.22em] text-[var(--muted-on-dark)]">
-            <a href="#" data-testid="footer-privacy" className="hover:text-[var(--cream)]">Privacy</a>
-            <a href="#" data-testid="footer-terms" className="hover:text-[var(--cream)]">Terms</a>
-            <a href="#" data-testid="footer-colophon" className="hover:text-[var(--cream)]">Colophon</a>
+          <div className="flex items-center gap-5 text-[12px] text-[var(--muted)]">
+            <a href="#" data-testid="footer-privacy" className="hover:text-[var(--ink)]">Privacy Policy</a>
+            <a href="#" data-testid="footer-terms" className="hover:text-[var(--ink)]">Terms</a>
+            <a href="#" data-testid="footer-imprint" className="hover:text-[var(--ink)]">Imprint</a>
           </div>
         </div>
       </div>
