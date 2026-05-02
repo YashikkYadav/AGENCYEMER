@@ -36,37 +36,46 @@ export default function Hero() {
 
         {/* Orbital illustration + headline */}
         <div className="relative mt-8 lg:mt-10">
-          {/* Dashed curved line overlay */}
+          {/* Dashed curves — one above, one below. Text stays clean in the middle. */}
           <svg
             aria-hidden
-            className="absolute inset-0 w-full h-full pointer-events-none hidden md:block"
-            viewBox="0 0 1200 520"
+            className="absolute -inset-x-10 -top-10 -bottom-10 w-[calc(100%+5rem)] h-[calc(100%+5rem)] pointer-events-none hidden md:block"
+            viewBox="0 0 1200 700"
             preserveAspectRatio="none"
           >
             <path
-              d="M140,80 C 260,10 420,10 560,90 C 700,170 820,260 720,330 C 620,400 860,460 1060,410"
+              d="M 90,180 Q 360,30 640,40 Q 920,50 1110,150"
               stroke="#F15A29"
               strokeWidth="2"
               fill="none"
               className="animate-draw"
               strokeLinecap="round"
             />
+            <path
+              d="M 110,560 Q 400,680 680,640 Q 920,610 1090,520"
+              stroke="#F15A29"
+              strokeWidth="2"
+              fill="none"
+              className="animate-draw"
+              strokeLinecap="round"
+              style={{ animationDelay: "0.6s" }}
+            />
           </svg>
 
-          {/* Floating icon chips */}
-          <FloatChip style={{ top: "6%", left: "4%" }} className="float-a" color="#FEEDE5">
+          {/* Floating icon chips — positioned at line endpoints/waypoints */}
+          <FloatChip style={{ top: "10%", left: "3%" }} className="float-a" color="#FEEDE5">
             <HeartPulse size={18} color="#F15A29" strokeWidth={2} />
           </FloatChip>
           <FloatChip style={{ top: "2%", right: "8%" }} className="float-b" color="#FFF4D6">
             <TrendingUp size={18} color="#C98A1B" strokeWidth={2} />
           </FloatChip>
-          <FloatChip style={{ top: "42%", right: "2%" }} className="float-c" color="#E8F1ED">
+          <FloatChip style={{ top: "44%", right: "1%" }} className="float-c" color="#E8F1ED">
             <Stethoscope size={18} color="#0E6E4F" strokeWidth={2} />
           </FloatChip>
-          <FloatChip style={{ top: "48%", left: "1%" }} className="float-a" color="#FFE2D6">
+          <FloatChip style={{ top: "52%", left: "2%" }} className="float-a" color="#FFE2D6">
             <Pill size={18} color="#D14418" strokeWidth={2} />
           </FloatChip>
-          <FloatChip style={{ top: "78%", right: "14%" }} className="float-b" color="#F0E8FF">
+          <FloatChip style={{ top: "86%", right: "16%" }} className="float-b" color="#F0E8FF">
             <Users size={18} color="#6B4EAB" strokeWidth={2} />
           </FloatChip>
 
