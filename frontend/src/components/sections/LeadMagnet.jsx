@@ -1,95 +1,143 @@
 import { useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 import { toast } from "sonner";
-import { ArrowRight } from "lucide-react";
 
 export default function LeadMagnet() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [submitting, setSubmitting] = useState(false);
+  const [busy, setBusy] = useState(false);
 
-  const onSubmit = (e) => {
+  const submit = (e) => {
     e.preventDefault();
-    if (!email || !phone) {
-      toast.error("Please enter both email and phone.");
+    if (!name || !email || !phone) {
+      toast.error("Please fill out name, email and phone.");
       return;
     }
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (!emailOk) {
-      toast.error("Please enter a valid email address.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast.error("That email doesn't look right.");
       return;
     }
     if (phone.replace(/\D/g, "").length < 10) {
       toast.error("Please enter a valid phone number.");
       return;
     }
-    setSubmitting(true);
+    setBusy(true);
     setTimeout(() => {
-      setSubmitting(false);
+      setBusy(false);
+      setName("");
       setEmail("");
       setPhone("");
-      toast.success("Got it! Our team will reach out within 24 hours.");
+      toast.success("Application received. We'll be in touch within 24 hours.");
     }, 700);
   };
 
   return (
     <section
       id="audit"
-      data-testid="lead-magnet-section"
-      className="py-20 lg:py-28"
-      style={{ backgroundColor: "#F15A29" }}
+      data-testid="lead-magnet"
+      className="relative py-24 lg:py-36 overflow-hidden"
+      style={{ background: "var(--ink)" }}
     >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-10 text-center">
-        <span className="inline-block text-[11px] font-bold uppercase tracking-[0.18em] text-white/80 mb-4">
-          Limited Audit Slots
-        </span>
-        <h2
-          className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight"
-          data-testid="lead-magnet-headline"
-        >
-          Get Your Free Clinic Growth Audit — Worth ₹5,000
-        </h2>
-        <p className="mt-4 text-base sm:text-lg text-white/90 max-w-2xl mx-auto">
-          We'll audit your Google presence, website, and ads — and show you exactly where you're losing patients.
-        </p>
+      {/* Decorative big serif word */}
+      <div
+        aria-hidden
+        className="absolute inset-x-0 -top-10 lg:-top-20 text-center serif font-light leading-none tracking-[-0.04em] pointer-events-none select-none"
+        style={{
+          fontSize: "clamp(8rem, 24vw, 22rem)",
+          color: "rgba(217,243,108,0.06)",
+        }}
+      >
+        Apply.
+      </div>
 
+      <div className="relative max-w-[1180px] mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-12 gap-6 lg:gap-10 items-end mb-12">
+          <div className="col-span-12 lg:col-span-7">
+            <div className="flex items-center gap-2 mono text-[10px] uppercase tracking-[0.22em] text-[var(--muted-on-dark)] mb-6">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--acid)] pulse-dot" />
+              Now booking 4 partners for Q1 ’26
+            </div>
+            <h2
+              data-testid="lead-headline"
+              className="serif text-[clamp(2.25rem,6vw,5.6rem)] leading-[0.96] tracking-[-0.03em] text-[var(--cream)] font-light"
+            >
+              Apply for a <span className="italic-soft text-[var(--acid)]">free</span>
+              <br />
+              clinic growth audit.
+            </h2>
+          </div>
+          <div className="col-span-12 lg:col-span-5">
+            <p className="text-[15px] leading-relaxed text-[var(--cream)]/65 max-w-md">
+              Forty-five minutes. We tear down your Google presence, paid funnels, website
+              and reputation — line by line. Worth ₹5,000. Yours, free, if we're a fit.
+            </p>
+          </div>
+        </div>
+
+        {/* Form */}
         <form
-          onSubmit={onSubmit}
-          data-testid="lead-magnet-form"
-          className="mt-10 max-w-2xl mx-auto bg-white rounded-2xl p-3 sm:p-3 flex flex-col sm:flex-row gap-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.18)]"
+          onSubmit={submit}
+          data-testid="lead-form"
+          className="rounded-3xl border border-[rgba(242,237,227,0.12)] bg-[var(--ink-2)] p-6 lg:p-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-5"
         >
-          <input
-            type="email"
-            placeholder="Your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            data-testid="lead-magnet-email"
-            className="flex-1 px-4 py-3 rounded-xl text-sm bg-transparent outline-none focus:ring-2 focus:ring-[#F15A29]/30"
-            style={{ color: "#2F3A3D" }}
-          />
-          <input
-            type="tel"
-            placeholder="Phone number"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            data-testid="lead-magnet-phone"
-            className="flex-1 px-4 py-3 rounded-xl text-sm bg-transparent outline-none focus:ring-2 focus:ring-[#F15A29]/30 sm:border-l"
-            style={{ color: "#2F3A3D", borderColor: "#E5E7EB" }}
-          />
-          <button
-            type="submit"
-            disabled={submitting}
-            data-testid="lead-magnet-submit"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white font-semibold text-sm transition-all hover:-translate-y-0.5 disabled:opacity-70"
-            style={{ backgroundColor: "#2F3A3D" }}
-          >
-            {submitting ? "Sending..." : "Claim Free Audit"}
-            {!submitting && <ArrowRight size={15} />}
-          </button>
-        </form>
+          <label className="md:col-span-4 flex flex-col gap-2">
+            <span className="mono text-[10px] uppercase tracking-[0.22em] text-[var(--muted-on-dark)]">
+              [01] Your name
+            </span>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Dr. ___________"
+              data-testid="lead-name"
+              className="bg-transparent border-b border-[rgba(242,237,227,0.18)] py-2 text-[var(--cream)] serif text-2xl tracking-tight outline-none focus:border-[var(--acid)] transition-colors"
+            />
+          </label>
+          <label className="md:col-span-4 flex flex-col gap-2">
+            <span className="mono text-[10px] uppercase tracking-[0.22em] text-[var(--muted-on-dark)]">
+              [02] Email
+            </span>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@clinic.in"
+              data-testid="lead-email"
+              className="bg-transparent border-b border-[rgba(242,237,227,0.18)] py-2 text-[var(--cream)] serif text-2xl tracking-tight outline-none focus:border-[var(--acid)] transition-colors"
+            />
+          </label>
+          <label className="md:col-span-4 flex flex-col gap-2">
+            <span className="mono text-[10px] uppercase tracking-[0.22em] text-[var(--muted-on-dark)]">
+              [03] Phone (WhatsApp)
+            </span>
+            <input
+              type="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="+91 ___________"
+              data-testid="lead-phone"
+              className="bg-transparent border-b border-[rgba(242,237,227,0.18)] py-2 text-[var(--cream)] serif text-2xl tracking-tight outline-none focus:border-[var(--acid)] transition-colors"
+            />
+          </label>
 
-        <p className="mt-5 text-xs text-white/80">
-          No spam. We respect your privacy. Only growth insights — straight to your inbox.
-        </p>
+          <div className="md:col-span-12 flex flex-col md:flex-row md:items-center md:justify-between gap-4 mt-2">
+            <p className="mono text-[10px] uppercase tracking-[0.22em] text-[var(--muted-on-dark)] max-w-md">
+              We reply within 24 hours · We only take on clinics we believe we can move ·
+              Confidential
+            </p>
+            <button
+              type="submit"
+              disabled={busy}
+              data-testid="lead-submit"
+              className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-medium transition-transform hover:-translate-y-0.5 disabled:opacity-60"
+              style={{ background: "var(--acid)", color: "var(--ink)" }}
+            >
+              {busy ? "Submitting…" : "Submit application"}
+              {!busy && <ArrowUpRight size={16} />}
+            </button>
+          </div>
+        </form>
       </div>
     </section>
   );

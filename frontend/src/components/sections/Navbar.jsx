@@ -1,23 +1,20 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
-
-const LOGO_URL =
-  "https://customer-assets.emergentagent.com/job_f610debc-ef05-476f-91fb-c01e8a987022/artifacts/eegoeqk7_image.png";
+import { Menu, X, ArrowUpRight } from "lucide-react";
+import Logo from "./Logo";
 
 const navLinks = [
+  { label: "Work", href: "#case-studies" },
   { label: "Services", href: "#services" },
-  { label: "Case Studies", href: "#case-studies" },
-  { label: "Blog", href: "#blog" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#audit" },
+  { label: "Process", href: "#process" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "Studio", href: "#manifesto" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-
+  const [open, setOpen] = useState(false);
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
@@ -26,95 +23,106 @@ export default function Navbar() {
   return (
     <header
       data-testid="site-navbar"
-      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-300 ${
-        scrolled ? "shadow-[0_4px_20px_rgba(0,0,0,0.06)]" : "shadow-none"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? "py-2" : "py-4"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-16 lg:h-20 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#top" className="flex items-center gap-2" data-testid="navbar-logo">
-          <span
-            className="inline-flex h-9 w-9 rounded-lg items-center justify-center"
-            style={{ backgroundColor: "#2F3A3D" }}
-          >
-            <img src={LOGO_URL} alt="Yashik Yadav & Co." className="h-6 w-6 object-contain invert" />
-          </span>
-          <div className="leading-tight">
-            <div className="font-bold text-[15px] sm:text-base" style={{ color: "#2F3A3D" }}>
-              Yashik Yadav & Co.
-            </div>
-            <div className="hidden sm:block text-[11px]" style={{ color: "#6D6D6D" }}>
-              Healthcare Digital Marketing
-            </div>
-          </div>
-        </a>
-
-        {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {navLinks.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              data-testid={`nav-link-${l.label.toLowerCase().replace(" ", "-")}`}
-              className="text-[15px] font-medium transition-colors hover:text-[#F15A29]"
-              style={{ color: "#2F3A3D" }}
-            >
-              {l.label}
-            </a>
-          ))}
-        </nav>
-
-        {/* CTA */}
-        <div className="hidden lg:flex">
-          <a
-            href="#audit"
-            data-testid="navbar-cta-get-free-audit"
-            className="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-white font-semibold text-sm shadow-sm transition-all hover:shadow-lg hover:-translate-y-0.5"
-            style={{ backgroundColor: "#F15A29" }}
-          >
-            Get Free Audit
-          </a>
-        </div>
-
-        {/* Mobile menu toggle */}
-        <button
-          data-testid="navbar-mobile-toggle"
-          className="lg:hidden p-2 rounded-md"
-          onClick={() => setMobileOpen((v) => !v)}
-          aria-label="Toggle menu"
+      <div className="px-3 sm:px-5">
+        <div
+          className={`mx-auto max-w-[1480px] flex items-center justify-between rounded-full transition-all duration-500 ${
+            scrolled
+              ? "border border-[rgba(242,237,227,0.12)] bg-[rgba(14,16,18,0.78)] backdrop-blur-xl px-3 sm:px-4 py-2"
+              : "px-3 sm:px-4 py-2"
+          }`}
+          style={{
+            boxShadow: scrolled ? "0 12px 40px rgba(0,0,0,0.35)" : "none",
+          }}
         >
-          {mobileOpen ? <X size={22} color="#2F3A3D" /> : <Menu size={22} color="#2F3A3D" />}
-        </button>
-      </div>
+          {/* Logo lockup */}
+          <a href="#top" className="flex items-center gap-2.5 group" data-testid="navbar-logo">
+            <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--cream)]">
+              <Logo size={22} variant="dark" />
+            </span>
+            <div className="leading-tight hidden sm:block">
+              <div className="serif text-[15px] font-semibold tracking-tight text-[var(--cream)]">
+                Yashik Yadav <span className="italic-soft text-[var(--acid)]">& Co.</span>
+              </div>
+              <div className="mono text-[9px] uppercase tracking-[0.18em] text-[var(--muted-on-dark)]">
+                Healthcare Growth Studio · Est. 2018
+              </div>
+            </div>
+          </a>
 
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="lg:hidden border-t border-[#E5E7EB] bg-white" data-testid="navbar-mobile-menu">
-          <div className="px-4 py-4 flex flex-col gap-3">
+          {/* Center nav */}
+          <nav className="hidden lg:flex items-center gap-7">
             {navLinks.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
-                onClick={() => setMobileOpen(false)}
-                data-testid={`mobile-nav-link-${l.label.toLowerCase().replace(" ", "-")}`}
-                className="text-[15px] font-medium py-1.5"
-                style={{ color: "#2F3A3D" }}
+                data-testid={`nav-${l.label.toLowerCase()}`}
+                className="text-[13px] tracking-tight text-[var(--cream)]/85 hover:text-[var(--acid)] transition-colors"
               >
                 {l.label}
               </a>
             ))}
+          </nav>
+
+          {/* CTA */}
+          <div className="hidden lg:flex items-center gap-2">
+            <span className="mono text-[10px] uppercase tracking-[0.18em] text-[var(--muted-on-dark)] flex items-center gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--acid)] pulse-dot" />
+              Booking Q1 ’26
+            </span>
             <a
               href="#audit"
-              onClick={() => setMobileOpen(false)}
-              data-testid="mobile-navbar-cta"
-              className="mt-2 inline-flex items-center justify-center px-5 py-3 rounded-full text-white font-semibold text-sm"
-              style={{ backgroundColor: "#F15A29" }}
+              data-testid="navbar-cta"
+              className="btn-flip group relative inline-flex items-center gap-1.5 rounded-full border border-[var(--acid)] px-4 py-2 text-[13px] font-medium text-[var(--acid)] transition-colors hover:text-[var(--ink)]"
             >
-              Get Free Audit
+              Start a project
+              <ArrowUpRight size={14} />
             </a>
           </div>
+
+          {/* Mobile */}
+          <button
+            data-testid="navbar-mobile-toggle"
+            onClick={() => setOpen((v) => !v)}
+            className="lg:hidden h-9 w-9 rounded-full border border-[rgba(242,237,227,0.18)] flex items-center justify-center text-[var(--cream)]"
+          >
+            {open ? <X size={18} /> : <Menu size={18} />}
+          </button>
         </div>
-      )}
+
+        {/* Mobile menu */}
+        {open && (
+          <div
+            data-testid="navbar-mobile-menu"
+            className="lg:hidden mt-2 mx-auto max-w-[1480px] rounded-3xl border border-[rgba(242,237,227,0.12)] bg-[rgba(14,16,18,0.96)] backdrop-blur-xl p-5"
+          >
+            <div className="flex flex-col gap-1">
+              {navLinks.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  data-testid={`mobile-nav-${l.label.toLowerCase()}`}
+                  className="serif text-3xl text-[var(--cream)] py-1.5"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </div>
+            <a
+              href="#audit"
+              onClick={() => setOpen(false)}
+              data-testid="mobile-navbar-cta"
+              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--acid)] px-5 py-3 text-sm font-semibold text-[var(--ink)]"
+            >
+              Start a project <ArrowUpRight size={14} />
+            </a>
+          </div>
+        )}
+      </div>
     </header>
   );
 }

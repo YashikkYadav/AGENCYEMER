@@ -1,35 +1,41 @@
-import { Search, MapPin, Megaphone, MessageCircle, Code, UserCircle, ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 const services = [
   {
-    icon: Search,
+    n: "01",
     title: "Healthcare SEO",
-    desc: "Rank #1 for treatments patients search in your city — every month.",
+    line: "Own every treatment search in your city.",
+    bullets: ["Local pack domination", "Programmatic location pages", "Authority backlinks", "Editorial content engine"],
   },
   {
-    icon: MapPin,
-    title: "Google My Business Optimization",
-    desc: "Show up in Google Maps & local pack — drive walk-ins on autopilot.",
+    n: "02",
+    title: "Performance Ads",
+    line: "Predictable patient leads — at the lowest CPL in your category.",
+    bullets: ["Meta + Google rotations", "Creative testing system", "Lead-quality scoring", "Custom landing pages"],
   },
   {
-    icon: Megaphone,
-    title: "Meta & Google Ads",
-    desc: "Predictable patient leads from paid campaigns at the lowest CPL.",
+    n: "03",
+    title: "WhatsApp Automation",
+    line: "Recover 30% of revenue you didn't know you were losing.",
+    bullets: ["Chatbot funnels", "Reactivation flows", "AI auto-replies", "CRM + EMR sync"],
   },
   {
-    icon: MessageCircle,
-    title: "WhatsApp Marketing Automation",
-    desc: "Automate reminders, follow-ups & re-engagement on WhatsApp.",
+    n: "04",
+    title: "Doctor Brand",
+    line: "Build the kind of trust that out-prices every competitor.",
+    bullets: ["Personal positioning", "Reels & YouTube engine", "PR placements", "Community building"],
   },
   {
-    icon: Code,
-    title: "Website Development for Clinics",
-    desc: "Fast, conversion-focused websites that turn visitors into bookings.",
+    n: "05",
+    title: "Web Development",
+    line: "Sites engineered to convert — not to win design awards.",
+    bullets: ["Conversion-led design", "Sub-1s load speed", "EMR/booking integrations", "Multi-location architecture"],
   },
   {
-    icon: UserCircle,
-    title: "Doctor Personal Branding",
-    desc: "Build a magnetic personal brand on Instagram, YouTube & LinkedIn.",
+    n: "06",
+    title: "Reputation",
+    line: "Become the obvious choice on Google, Justdial and Practo.",
+    bullets: ["GMB optimization", "Review velocity", "Crisis management", "Listings hygiene"],
   },
 ];
 
@@ -37,59 +43,74 @@ export default function Services() {
   return (
     <section
       id="services"
-      data-testid="services-section"
-      className="py-20 lg:py-28"
-      style={{ backgroundColor: "#F5F5F5" }}
+      data-testid="services"
+      className="relative py-24 lg:py-32"
+      style={{ background: "var(--ink)" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
-        <div className="max-w-3xl">
-          <span
-            className="inline-block text-xs font-bold uppercase tracking-wider mb-3"
-            style={{ color: "#F15A29" }}
-          >
-            Our Services
-          </span>
-          <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight"
-            style={{ color: "#2F3A3D" }}
-            data-testid="services-headline"
-          >
-            Everything Your Clinic Needs to Grow Digitally
-          </h2>
-          <p className="mt-4 text-base sm:text-lg" style={{ color: "#6D6D6D" }}>
-            One agency. Six growth engines. Zero patchwork.
-          </p>
+      <div className="max-w-[1480px] mx-auto px-5 sm:px-8 lg:px-12">
+        {/* Header */}
+        <div className="grid grid-cols-12 gap-6 lg:gap-10 mb-16 lg:mb-20">
+          <div className="col-span-12 lg:col-span-3">
+            <div className="flex items-center gap-2 mono text-[10px] uppercase tracking-[0.22em] text-[var(--muted-on-dark)]">
+              <span className="h-px w-8 bg-[var(--acid)]" />
+              Capabilities
+            </div>
+          </div>
+          <div className="col-span-12 lg:col-span-9">
+            <h2
+              data-testid="services-headline"
+              className="serif text-[clamp(2rem,5.5vw,5rem)] leading-[0.98] tracking-[-0.025em] text-[var(--cream)] font-light"
+            >
+              Six engines.{" "}
+              <span className="italic-soft text-[var(--acid)]">One</span> system.
+              <br />
+              Every patient — measured.
+            </h2>
+          </div>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Service rows */}
+        <div className="border-t border-[rgba(242,237,227,0.10)]">
           {services.map((s) => (
-            <div
-              key={s.title}
-              data-testid={`service-card-${s.title.toLowerCase().replace(/\s+/g, "-")}`}
-              className="group rounded-2xl bg-white p-7 transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(47,58,61,0.08)]"
-              style={{ border: "1px solid #E5E7EB" }}
+            <article
+              key={s.n}
+              data-testid={`service-${s.n}`}
+              className="group grid grid-cols-12 gap-6 lg:gap-10 items-start py-7 lg:py-9 border-b border-[rgba(242,237,227,0.10)] transition-colors hover:bg-[rgba(217,243,108,0.03)]"
             >
-              <div
-                className="inline-flex h-12 w-12 rounded-xl items-center justify-center mb-5"
-                style={{ backgroundColor: "#FEEDE6" }}
-              >
-                <s.icon size={22} color="#F15A29" />
+              <div className="col-span-3 lg:col-span-1 mono text-xs text-[var(--acid)] pt-2">
+                {s.n}
               </div>
-              <h3 className="text-lg font-bold" style={{ color: "#2F3A3D" }}>
-                {s.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed" style={{ color: "#6D6D6D" }}>
-                {s.desc}
-              </p>
-              <a
-                href="#audit"
-                className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold transition-all group-hover:gap-2"
-                style={{ color: "#F15A29" }}
-                data-testid={`service-link-${s.title.toLowerCase().replace(/\s+/g, "-")}`}
-              >
-                Learn More <ArrowRight size={14} />
-              </a>
-            </div>
+              <div className="col-span-9 lg:col-span-4">
+                <h3 className="serif text-3xl lg:text-5xl tracking-tight text-[var(--cream)] leading-none">
+                  {s.title}
+                </h3>
+              </div>
+              <div className="col-span-12 lg:col-span-4 lg:pt-3">
+                <p className="text-[15px] lg:text-base leading-relaxed text-[var(--cream)]/70">
+                  {s.line}
+                </p>
+                <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-1.5">
+                  {s.bullets.map((b) => (
+                    <li
+                      key={b}
+                      className="text-[12px] text-[var(--cream)]/55 flex items-center gap-1.5"
+                    >
+                      <span className="h-1 w-1 rounded-full bg-[var(--acid)]" />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="col-span-12 lg:col-span-3 flex lg:justify-end pt-3">
+                <a
+                  href="#audit"
+                  data-testid={`service-link-${s.n}`}
+                  className="inline-flex items-center gap-1.5 mono text-[11px] uppercase tracking-[0.18em] text-[var(--cream)]/75 hover:text-[var(--acid)] transition-all group-hover:gap-2.5"
+                >
+                  Engage <ArrowUpRight size={13} />
+                </a>
+              </div>
+            </article>
           ))}
         </div>
       </div>
