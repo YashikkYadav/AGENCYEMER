@@ -76,12 +76,11 @@ export default function Hero() {
             className="rise-2 relative mx-auto max-w-4xl text-[clamp(2.75rem,6.4vw,5.25rem)] leading-[1.02] tracking-[-0.02em] font-semibold text-[var(--ink)]"
           >
             Turning clicks <br />
-            into <span className="script text-[var(--sage)] text-[1.15em] leading-[0.9] inline-block align-baseline">
+            into{" "}
+            <span className="script italic-soft text-[var(--sage)] text-[1.12em] leading-[0.95] inline-block align-baseline">
               patients
             </span>
-            <span className="relative inline-block">
-              .
-            </span>
+            <span className="relative inline-block">.</span>
           </h1>
 
           <p className="rise-3 mt-6 max-w-xl mx-auto text-[16.5px] leading-[1.6] text-[var(--muted)]">
