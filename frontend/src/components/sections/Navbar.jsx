@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X, ArrowRight } from "lucide-react";
 import Logo from "./Logo";
 
 const links = [
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Results", href: "#case-studies" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Contact", href: "/#audit" },
 ];
 
 export default function Navbar() {
@@ -30,11 +29,11 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-[1280px] mx-auto px-5 sm:px-8 h-16 lg:h-20 flex items-center justify-between">
-        <a href="#top" className="flex items-center" data-testid="navbar-logo">
+        <Link to="/" className="flex items-center" data-testid="navbar-logo">
           <Logo height={38} variant="ink" />
-        </a>
+        </Link>
 
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-10">
           {links.map((l) => (
             <a
               key={l.href}
@@ -48,10 +47,7 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          <a href="#pricing" className="text-[14px] font-medium text-[var(--ink-soft)] hover:text-[var(--ink)]">
-            Log in
-          </a>
-          <a href="#audit" data-testid="navbar-cta" className="btn-sage">
+          <a href="/#audit" data-testid="navbar-cta" className="btn-sage">
             Book free audit
             <ArrowRight size={15} />
           </a>
@@ -67,7 +63,7 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div data-testid="navbar-mobile-menu" className="lg:hidden bg-white border-t border-[var(--line)]">
+        <div data-testid="navbar-mobile-menu" className="lg:hidden bg-[var(--paper)] border-t border-[var(--line)]">
           <div className="px-5 py-5 flex flex-col gap-2">
             {links.map((l) => (
               <a
@@ -81,7 +77,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#audit"
+              href="/#audit"
               onClick={() => setOpen(false)}
               data-testid="mobile-navbar-cta"
               className="btn-sage mt-3 w-full"

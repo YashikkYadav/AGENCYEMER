@@ -1,4 +1,3 @@
-import { Toaster } from "@/components/ui/sonner";
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
 import TrustLogos from "@/components/sections/TrustLogos";
@@ -29,7 +28,6 @@ export default function LandingPage() {
         <LeadMagnet />
       </main>
       <Footer />
-      <Toaster position="bottom-right" />
     </div>
   );
 }

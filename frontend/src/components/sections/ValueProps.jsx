@@ -33,7 +33,7 @@ const props = [
 
 export default function ValueProps() {
   return (
-    <section data-testid="value-props" className="py-20 lg:py-28 bg-[var(--paper)]">
+    <section data-testid="value-props" id="about" className="py-20 lg:py-28 bg-[var(--paper)]">
       <div className="max-w-[1280px] mx-auto px-5 sm:px-8">
         <div className="max-w-3xl">
           <div className="text-[12px] font-semibold tracking-[0.18em] uppercase text-[var(--sage)] mb-4">
