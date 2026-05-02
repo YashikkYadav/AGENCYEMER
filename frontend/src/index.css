@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --brand-orange: #F15A29;
+    --brand-orange-dark: #d94a1f;
+    --brand-dark: #2F3A3D;
+    --brand-bg: #F5F5F5;
+    --brand-secondary-text: #6D6D6D;
+    --brand-card: #FFFFFF;
+    --brand-border: #E5E7EB;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--brand-bg);
+    color: var(--brand-dark);
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+}
+
+::selection {
+    background: #F15A29;
+    color: #ffffff;
+}
+
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 200 10% 21%;
+        --card: 0 0% 100%;
+        --card-foreground: 200 10% 21%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 200 10% 21%;
+        --primary: 14 88% 55%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 0 0% 96.1%;
+        --secondary-foreground: 200 10% 21%;
+        --muted: 0 0% 96.1%;
+        --muted-foreground: 0 0% 43%;
+        --accent: 14 88% 96%;
+        --accent-foreground: 14 88% 35%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 220 13% 91%;
+        --input: 220 13% 91%;
+        --ring: 14 88% 55%;
+        --radius: 0.625rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+/* Utility classes */
+.brand-orange-bg { background-color: #F15A29; }
+.brand-orange-text { color: #F15A29; }
+.brand-dark-bg { background-color: #2F3A3D; }
+.brand-dark-text { color: #2F3A3D; }
+.brand-secondary-text { color: #6D6D6D; }
+.brand-border { border-color: #E5E7EB; }
+
+/* Scrolling marquee for trusted strip */
+@keyframes scroll-x {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+.animate-scroll-x {
+    animation: scroll-x 30s linear infinite;
+}
+
+/* Subtle fade-up entrance */
+@keyframes fade-up {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+    animation: fade-up 0.6s ease-out both;
+}
+
+/* Hide scrollbar on marquee */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+}
