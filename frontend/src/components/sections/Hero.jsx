@@ -64,12 +64,22 @@ export default function Hero() {
               <span className="script italic-soft text-[var(--sage)] text-[1.12em] leading-[0.95]">
                 patients
               </span>
-              {/* Subtle translucent black underline */}
-              <span
+              {/* Subtle translucent black underline — gentle curve */}
+              <svg
                 aria-hidden
-                className="absolute left-4 right-2 -bottom-1 h-[2px] rounded-full"
-                style={{ background: "rgba(15, 20, 25, 0.35)" }}
-              />
+                className="absolute left-4 right-2 -bottom-2 h-[10px] pointer-events-none"
+                style={{ width: "calc(100% - 1.5rem)" }}
+                viewBox="0 0 200 12"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M2,7 Q 60,1 100,6 T 198,5"
+                  stroke="rgba(15, 20, 25, 0.35)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  fill="none"
+                />
+              </svg>
             </span>
             <span>.</span>
           </h1>
